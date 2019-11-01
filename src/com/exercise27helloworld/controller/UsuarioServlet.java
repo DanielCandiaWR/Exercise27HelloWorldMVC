@@ -1,5 +1,5 @@
 package com.exercise27helloworld.controller;
-
+import com.exercise27helloworld.model.UserModel;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,9 +35,23 @@ public class UsuarioServlet extends HttpServlet {
 		sname = request.getParameter("userName");
 		sage = request.getParameter("userAge");
 		
-		response.getWriter().append("The id input is: "+sid);
+		UserModel myUser = new UserModel();
+		myUser.setId(Integer.parseInt(sid.trim()));
+		myUser.setName(sname);
+		myUser.setAge(Byte.parseByte(sage.trim()));
+		
+		response.getWriter().append("The user id is: "+myUser.getId()+"\n");
+		response.getWriter().append("The user name is: "+myUser.getName()+"\n");
+		response.getWriter().append("The user age is: "+myUser.getAge()+"\n");
+		
+		/*response.getWriter().append(Long.toString(myUser.getId())+" ");
+		response.getWriter().append(myUser.getName()+" ");
+		response.getWriter().append(Byte.toString(myUser.getAge()));*/
+		
+		//this is for front
+		/*response.getWriter().append("The id input is: "+sid);
 		response.getWriter().append("The input name is: "+sname);
-		response.getWriter().append("The input age is: "+sage);
+		response.getWriter().append("The input age is: "+sage);*/
 	}
 
 }
